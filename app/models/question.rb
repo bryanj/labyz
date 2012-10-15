@@ -2,6 +2,7 @@ class Question < ActiveRecord::Base
   attr_accessible :world, :title, :content, :user_count
 
   belongs_to :world
+  has_many :hints
 
   before_create :generate_uid
 

@@ -25,7 +25,7 @@
         <div class="well sidebar-nav">
           <ul class="nav nav-list">
             <li class="nav-header">힌트</li>
-            <li>English Word.</li>
+            <li><%=@question.hints.first.content rescue ""%></li>
           </ul>
         </div>
       </div>
