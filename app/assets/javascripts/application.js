@@ -20,4 +20,13 @@ $(function() {
     $('#solution_form').submit();
   });
   $('#solution_form_link').val('');
+  $('#slider').bxSlider({
+    auto: true,
+    controls: false,
+    pager: true,
+    pagerLocation: 'top',
+    mode: 'fade',
+    pause: 5000,
+    randomStart: true
+  });
 });

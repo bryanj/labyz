@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120901173319) do
+ActiveRecord::Schema.define(:version => 20121015105924) do
 
   create_table "links", :force => true do |t|
     t.integer  "question_id"
@@ -34,8 +34,10 @@ ActiveRecord::Schema.define(:version => 20120901173319) do
     t.string   "title"
     t.string   "content"
     t.string   "uid"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.string   "identifier"
+    t.integer  "user_count", :default => 0
   end
 
   add_index "questions", ["uid"], :name => "index_questions_on_uid"
@@ -53,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20120901173319) do
     t.string   "first_uid"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "uid"
   end
 
 end

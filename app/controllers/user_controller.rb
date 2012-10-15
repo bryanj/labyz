@@ -2,6 +2,7 @@
 class UserController < ApplicationController
   def index
     redirect_to '/' if session[:user_id]
+    @worlds = World.all
   end
 
   def login

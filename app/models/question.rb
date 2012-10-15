@@ -1,5 +1,5 @@
 class Question < ActiveRecord::Base
-  attr_accessible :world, :title, :content
+  attr_accessible :world, :title, :content, :user_count
 
   belongs_to :world
 

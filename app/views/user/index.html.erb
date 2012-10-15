@@ -1,12 +1,4 @@
     <div id="welcome" class="row-fluid">
-      <div class="hero-unit">
-        <h1>KSA</h1>
-      </div>
-      <div class="wording">
-        <p>라비린스</p>
-      </div>
-      
-      <hr>
       <div class="loginbox">
         <form action="/user/login" method="post" class="form-inline">
           <input name="username" type="text" class="input-small" placeholder="사용자명">
@@ -15,5 +7,11 @@
         </form>
       </div>
       <hr>
-      
+      <div id="slider">
+<% @worlds.each do |world| %>
+        <div id="slider_<%=world.uid%>">
+          <%=image_tag world.uid+".jpg" %>
+        </div>
+<% end %>
+      </div>
     </div>
