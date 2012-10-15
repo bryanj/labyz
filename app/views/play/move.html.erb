@@ -1,0 +1,10 @@
+<dl class="dl-horizontal">
+<% @worlds.each do |world| %>
+  <dt><%= world.name %></dt>
+  <dd>
+  <% @logs.where(world_id: world.id).each do |log| %>
+    <%= link_to log.question.title, "/play/"+log.question.uid %>
+  <% end %>
+  </dd>
+<% end %>
+</dl>

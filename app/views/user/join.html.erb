@@ -1,0 +1,41 @@
+    <div class="row-fluid">
+      <h1>회원가입</h1>
+
+<% if flash[:error] %>
+      <div class="alert">
+        <%=flash[:error]%>
+      </div>
+<% end %>
+
+      <div id="join-info">
+        <p>사용자명과 비밀번호는 잊지 않도록 주의하세요.</p>
+      </div>
+
+      <div id="join-box">
+        <form action="/user/create" method="post" class="form-horizontal">
+          <fieldset>
+            <div class="control-group">
+              <label class="control-label" for="username">사용자명</label>
+              <div class="controls">
+                <input type="text" name="username" value="<%=flash[:username]%>">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="password">비밀번호</label>
+              <div class="controls">
+                <input type="password" name="password">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="confirm">비밀번호 확인</label>
+              <div class="controls">
+                <input type="password" name="confirm">
+              </div>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">등록</button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>

@@ -1,0 +1,33 @@
+    <div class="row-fluid">
+      <div id="question" class="span9">
+        <h1 id="title"><%=@question.title%></h1>
+        <div id="scenario">
+<%=raw @question.content%>
+        </div>
+        <hr>
+        <div id="answer-box">
+          <%=form_tag '/play/solve', id: 'solution_form', class: 'form-inline' do %>
+            <input type="hidden" name="question_id" value="<%=@question.id%>">
+            <input id="solution_form_link" type="hidden" name="link" value="">
+            <input name="answer" type="text" class="input-medium">
+            <button type="submit" class="btn btn-primary">입력</button>
+          <% end %>
+        </div>
+      </div>
+      <div id="infobox" class="span3">
+        <div class="well sidebar-nav">
+          <ul class="nav nav-list">
+            <li class="nav-header">문제정보</li>
+            <li>문제번호: 4-VISION-1</li>
+            <li>풀이여부: X</li>
+            <li>푼사람수: 3명</li>
+          </ul>
+        </div>
+        <div class="well sidebar-nav">
+          <ul class="nav nav-list">
+            <li class="nav-header">힌트</li>
+            <li>English Word.</li>
+          </ul>
+        </div>
+      </div>
+    </div>

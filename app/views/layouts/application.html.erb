@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>KSA Labyrinth</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <%=stylesheet_link_tag 'bootstrap' %>
+    <%=stylesheet_link_tag 'bootstrap-responsive' %>
+    <%=stylesheet_link_tag 'labyrinth' %>
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container-fluid">
+      
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+<% if session[:user_id] %>
+        <div class="btn-group pull-right">
+          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+            <i class="icon-user"></i> <%=session[:username] %>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <!--<li class="divider"></li>-->
+            <li><a href="/user/logout">로그아웃</a></li>
+          </ul>
+        </div>
+<% end %>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li><a href="/">시작화면</a></li>
+<% if session[:user_id] %>
+            <li><a href="/play/move">문제이동</a></li>
+<% else %>
+            <li><a href="/user/join">회원가입</a></li>
+<% end %>
+            <li><a href="/help">도움말</a></li>
+          </ul>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+
+  <div class="body container-fluid">
+    
+    <%= yield %>
+
+  </div>
+  <script src="http://www.google.com/jsapi"></script>
+  <script>
+  google.load("webfont", "1");
+  google.setOnLoadCallback(function(){
+    WebFont.load({custom: {
+      families: ["NanumGothic"],
+      urls: ["http://fontface.kr/NanumGothic/css"]
+    }});
+  });
+  </script>
+  <%=javascript_include_tag 'jquery-1.7.2.min' %>
+  <%=javascript_include_tag 'bootstrap' %>
+  <%=javascript_include_tag 'application' %>
+  </body>
+</html>
+
