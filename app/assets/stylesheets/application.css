@@ -74,6 +74,7 @@ body * {
   margin-top: 20px;
   padding: 10px;
   background-color: #ddd;
+  color: #444;
 }
 #question #scenario,
 #question #problem,
