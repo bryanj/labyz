@@ -46,7 +46,6 @@ body * {
   height: 480px;
 }
 #slider_labyrinth_4 {
-  background-color: #191971;
 }
 #slider_labyrinth_5 {
 }
@@ -58,22 +57,11 @@ body * {
   margin: 30px 0;
 }
 
-.help-item {
-  background-color: #e7e7f0;
-  padding: 15px;
-  margin-top: 25px;
-  border-radius: 6px;
-}
-.help-item h2 {
-  font-size: 20px;
-  margin-bottom: 8px;
-}
-.help-item #example-problem {
+#example-problem {
   text-align: center;
-  color: #33f;
   margin: 20px 0;
 }
-.help-item #example-answer {
+#example-answer {
   display: none;
 }
 
@@ -90,7 +78,6 @@ body * {
 #question #scenario,
 #question #problem,
 #question #answer-box {
-  border-bottom: 1px solid #ddd;
   margin-bottom: 30px;
   padding-bottom: 20px;
 }
