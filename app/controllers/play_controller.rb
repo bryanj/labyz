@@ -25,8 +25,7 @@ class PlayController < ApplicationController
     if link
       Log.create(world_id: link.question.world_id, question_id: link.next_question.id, user_id: session[:user_id]) if Log.where(question_id: link.next_question.id, user_id: session[:user_id]).empty?
       redirect_to '/play/' + link.next_question.uid
-    else
-      redirect_to '/play/' + Question.find(params[:question_id]).uid
+      return
     end
   end
 

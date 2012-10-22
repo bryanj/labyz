@@ -29,4 +29,8 @@ $(function() {
     pause: 5000,
     randomStart: true
   });
+  $('.back_link').click(function(e) {
+    e.preventDefault();
+    history.go(-1);
+  });
 });
