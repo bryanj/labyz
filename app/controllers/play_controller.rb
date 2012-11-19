@@ -29,6 +29,29 @@ class PlayController < ApplicationController
     end
   end
 
+  def board
+    @question = Question.where(uid: params[:uid]).first
+    @question = Question.first if @question.nil?
+    log = Log.where(question_id: @question.id, user_id: session[:user_id]).first
+    render :text => 'Invalid access' and return if log.nil?
+    @comments = Comment.where(question_id: @question.id)
+    @username = User.find(session[:user_id]).username
+  end
+
+  def create_comment
+    question = Question.where(uid: params[:uid]).first
+    log = Log.where(question_id: question.id, user_id: session[:user_id]).first
+    render :text => 'Invalid access' and return if log.nil?
+    Comment.create(user_id: session[:user_id], question_id: question.id, content: params[:content])
+    redirect_to "/play/#{question.uid}/board"
+  end
+
+  def remove_comment
+    comment = Comment.find(params[:id])
+    comment.update_attributes(deleted: true)
+    redirect_to "/play/#{params[:uid]}/board"
+  end
+
   private
     def check_authentication
       redirect_to '/user' if session[:user_id].nil?

@@ -1,0 +1,36 @@
+    <div class="row-fluid">
+      <div id="board" class="span9">
+        <h1 id="title"><%=@question.title%></h1>
+        <a href="/play/<%=@question.uid%>">&lt; 돌아가기</a>
+        <%=form_tag "/play/#{@question.uid}/create_comment", class: "form-inline" do %>
+          <table class="table">
+            <tbody>
+              <tr>
+                <td class="span2"><%=@username%></td>
+                <td><textarea class="board_content_field" name="content" rows="3"></textarea></td>
+                <td class="span2"><button type="submit" class="btn btn-primary">작성</button></td>
+              </tr>
+            </tbody>
+          </table>
+        <% end %>
+        <table id="board" class="table table-striped">
+          <thead>
+            <tr>
+              <th class="span2">작성자</th>
+              <th>내용</th>
+              <th class="span2">작성시간</th>
+            </tr>
+          </thead>
+          <tbody>
+<% @comments.each do |comment| %>
+            <tr>
+              <td><%=comment.user.username%></td>
+              <td><%=comment.content%> <%=link_to "X", "/play/#{@question.uid}/remove_comment/#{comment.id}" if comment.user_id == session[:user_id]%></td>
+              <td><%=time_ago_in_words comment.created_at%> 전</td>
+            </tr>
+<% end %>
+          </tbody>
+        </table>
+      </div>
+<%= render "side" %>
+    </div>

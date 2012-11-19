@@ -1,0 +1,34 @@
+ko:
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: 한 시간
+        other: ! '%{count}시간'
+      about_x_months:
+        one: 한 달
+        other: ! '%{count}달'
+      about_x_years:
+        one: 1년
+        other: ! '%{count}년'
+      less_than_x_minutes:
+        one: 방금
+        other: 방금
+      x_days:
+        one: 하루
+        other: ! '%{count}일'
+      x_minutes:
+        one: 1분
+        other: ! '%{count}분'
+      x_months:
+        one: 한 달
+        other: ! '%{count}달'
+      x_seconds:
+        one: 1초
+        other: ! '%{count}초'
+    prompts:
+      day: 일
+      hour: 시
+      minute: 분
+      month: 월
+      second: 초
+      year: 년

@@ -1,0 +1,16 @@
+      <div id="infobox" class="span3">
+        <div class="well sidebar-nav">
+          <ul class="nav nav-list">
+            <li class="nav-header">문제정보</li>
+            <li>문제번호: <%=@question.identifier%></li>
+            <li>푼사람수: <%=@question.user_count%>명</li>
+            <li><a href="/play/<%=@question.uid%>/board">게시판 보기</a></li>
+          </ul>
+        </div>
+        <div class="well sidebar-nav">
+          <ul class="nav nav-list">
+            <li class="nav-header">힌트</li>
+            <li><%=@question.hints.first.content rescue ""%></li>
+          </ul>
+        </div>
+      </div>
