@@ -12,7 +12,7 @@
 <% @worlds.each do |world| %>
     data['<%=world.uid%>'].addRows([
       <%= raw @logs.where(world_id: world.id).map{|log|
-        "[{v:'#{log.question.uid}',f:'#{log.question.title}'}, #{log.question.parent_uid_string}]"
+        "[{v:'#{log.question.uid}',f:'#{log.question.title.gsub("'","\\'")}'}, #{log.question.parent_uid_string}]"
       }.join(",") %>
     ]);
 <% end %>
