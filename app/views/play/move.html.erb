@@ -1,10 +1,33 @@
-<dl class="dl-horizontal">
+<script type="text/javascript">
+  google.load('visualization','1',{packages:['orgchart']});
+  google.setOnLoadCallback(function(){
+    var worlds = [<%=raw @worlds.map{|w| "'#{w.uid}'"}.join(",")%>];
+    var data = new Array();
+    for (var i in worlds) {
+      var world = worlds[i];
+      data[world] = new google.visualization.DataTable();
+      data[world].addColumn('string', 'Question');
+      data[world].addColumn('string', 'Parent');
+    };
 <% @worlds.each do |world| %>
-  <dt><%= world.name %></dt>
-  <dd>
-  <% @logs.where(world_id: world.id).each do |log| %>
-    <%= link_to log.question.title, "/play/"+log.question.uid %>
-  <% end %>
-  </dd>
+    data['<%=world.uid%>'].addRows([
+      <%= raw @logs.where(world_id: world.id).map{|log|
+        "[{v:'#{log.question.uid}',f:'#{log.question.title}'}, #{log.question.parent_uid_string}]"
+      }.join(",") %>
+    ]);
 <% end %>
-</dl>
+    var chart = new Array();
+    for (var i in worlds) {
+      var world = worlds[i];
+      chart[world] = new google.visualization.OrgChart($('#route_'+world)[0]);
+      chart[world].draw(data[world],{nodeClass:'node',selectedNodeClass:'selectedNode'});
+      google.visualization.events.addListener(chart[world], 'select', function(){
+        location.href = '/play/' + data[world].getValue(chart[world].getSelection()[0].row, 0);
+      });
+    }
+  });
+</script>
+<% @worlds.each do |world| %>
+<h4><%=world.name%></h4>
+<div id="route_<%=world.uid%>"></div>
+<% end %>

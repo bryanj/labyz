@@ -90,3 +90,25 @@ body * {
   margin-top: 20px;
   margin-bottom: 40px;
 }
+
+.node {
+  padding: 5px !important;
+  background-color: #666;
+  color: white;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.google-visualization-orgchart-lineleft {
+  border-left-color: #666 !important;
+}
+
+.google-visualization-orgchart-lineright {
+  border-right-color: #666 !important;
+}
+
+.google-visualization-orgchart-linebottom {
+  border-bottom-color: #666 !important;
+}

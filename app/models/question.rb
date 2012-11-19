@@ -1,10 +1,15 @@
 class Question < ActiveRecord::Base
-  attr_accessible :world, :title, :content, :user_count
+  attr_accessible :world, :title, :content, :user_count, :parent_id
 
   belongs_to :world
+  belongs_to :parent, class_name: Question
   has_many :hints
 
   before_create :generate_uid
+
+  def parent_uid_string
+    "'#{self.parent.uid}'" rescue "null"
+  end
 
   private
     def generate_uid
